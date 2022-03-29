@@ -37,7 +37,11 @@ def about(request):
 
 #显示所有的type
 def show_by_type(request):
-    pass
+    type_list = BlogType
+    for i in range(len(type_list)):
+        type_list[i] = BlogType[i][1]
+    context = {'type_list': type_list}
+    return render(request, 'show_by_type.html', context)
 
 #依照type把这些相关的博客筛选出来展示列表
 def show_list_by_type(request):
