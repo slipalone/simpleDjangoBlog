@@ -27,6 +27,10 @@ def detail_page(request, blog_id):
     return render(request,'detail_page.html',{'blog_detail': blog_detail})
 
 
+def cover(request):
+    return render(request,'cover.html')
+
+
 #单独的about页面，放一些个人信息
 def about(request):
     return render(request,'about_me.html')
