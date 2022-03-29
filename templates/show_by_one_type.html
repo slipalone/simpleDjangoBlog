@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if blog_list_type %}
+    {% for blog in blog_list_type %}
+<hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">标题： <span class="text-muted"> {{ blog.id }}</span></h2>
+        <p class="lead"> 详情请按按钮 </p>
+          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+      </div>
+    </div>
+
+    {% endfor %}
+
+
+{% endif %} 
+{% endblock %}
