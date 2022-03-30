@@ -37,20 +37,16 @@ def about(request):
 
 #显示所有的type
 def show_by_type(request):
-    type_list = BlogType
-    for i in range(len(type_list)):
-        type_list[i] = BlogType[i][1]
-    context = {'type_list': type_list}
+    context = {'type_list': BlogType}
     return render(request, 'show_by_type.html', context)
 
 #依照type把这些相关的博客筛选出来展示列表
-def show_by_one_type(request,blog_type):
+def show_by_one_type(request,type_index):
     try:
-        blog_list_type = Blog.objects.filter(blog_type=blog_type)
-        blog_list_type.blog_type = BlogType[blog_list_type.blog_type][1]
+        blog_list_type = Blog.objects.filter(blog_type=type_index)
     except Blog.DoesNotExist:
         raise Http404(u'页面不存在')
-    return render(request, 'show_by_one_type.html', {'blog_list_type', blog_list_type})
+    return render(request, 'show_by_one_type.html', {'blog_list_type': blog_list_type})
 
 #单独的搜索页
 def search(request):

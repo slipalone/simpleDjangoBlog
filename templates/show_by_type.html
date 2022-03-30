@@ -7,9 +7,9 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Type: <span class="text-muted"> {{ type }}</span></h2>
+        <h2 class="featurette-heading">Type: <span class="text-muted"> {{ type.1 }}</span></h2>
         <p class="lead"> 详情请按按钮 </p>
-          <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+          <p><a class="btn btn-secondary" href="/type/{{ type.0 }}">View details &raquo;</a></p>
       </div>
     </div>
     {% endfor %}
