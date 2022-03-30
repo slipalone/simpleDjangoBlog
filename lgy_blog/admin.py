@@ -1,6 +1,6 @@
 from django.contrib import admin
-from lgy_blog.models import Blog,Tag
-
+from lgy_blog.models import Blog
+#from lgy_blog.models import Tag
 # Register your models here.
 
 class blockAdmin(admin.ModelAdmin):
@@ -12,4 +12,4 @@ class blockAdmin(admin.ModelAdmin):
         super().save_model(request,obj,form,change)
 
 admin.site.register(Blog,blockAdmin)
-admin.site.register(Tag)
+#admin.site.register(Tag)

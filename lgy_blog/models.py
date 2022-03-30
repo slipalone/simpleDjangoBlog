@@ -10,11 +10,9 @@ BlogType = [
     (3,"爱好类")
 ]
 
-
+'''
+暂时不做标签的功能
 class Tag(models.Model):
-    '''
-    可以加标签了
-    '''
     tag_name = models.CharField(verbose_name=u'文章标签', max_length=20)
 
     class Meta:
@@ -23,6 +21,8 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.tag_name
+'''
+
 
 
 class Blog(models.Model):
@@ -34,7 +34,7 @@ class Blog(models.Model):
     created_date = models.DateTimeField(verbose_name=u'创建日期', default=datetime.now)
     modified_date = models.DateTimeField(verbose_name=u'修改日期', default=datetime.now)
     click_nums = models.IntegerField(verbose_name=u'点击量',default=0)
-    tag = models.ManyToManyField(Tag, verbose_name=u'博客标签')
+    #tag = models.ManyToManyField(Tag, verbose_name=u'博客标签')
 
     class Meta:
         verbose_name = u'个人博客'
