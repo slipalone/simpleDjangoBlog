@@ -6,7 +6,8 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">标题： <span class="text-muted"> {{ blog_list.blog_title }}</span></h2>
+        <h2 class="featurette-heading">标题： <span class="text-muted"> {{ blog_list.blog_title }}</span>  创建人：<span class="text-muted"> {{ blog_list.creator }}</span></h2>
+          <h2 class="featurette-heading">创建时间： <span class="text-muted"> {{ blog_list.created_date }}</span></h2>
         <p class="lead"> 详情请按按钮 </p>
           <p><a class="btn btn-secondary" href="/blog/{{ blog_list.id }}">View details &raquo;</a></p>
       </div>
