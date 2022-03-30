@@ -24,6 +24,8 @@
 5. 开放注册 
 6. 允许前端提交博文
 7. 加缓存做优化
+8. 环境隔离 
+9. python manage.py runserver --settings=settings.local
 
 完成上线！！！！！！
 

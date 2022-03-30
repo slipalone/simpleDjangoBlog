@@ -16,9 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.utils.translation import gettext as _
 
 
 urlpatterns = [
     url(r"^", include('lgy_blog.urls')),
     path('admin/', admin.site.urls),
 ]
+
+admin.site.site_header = _('雨晨Blog管理系统')

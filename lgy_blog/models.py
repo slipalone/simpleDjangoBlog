@@ -28,7 +28,7 @@ class Tag(models.Model):
 class Blog(models.Model):
     blog_type = models.SmallIntegerField(blank=False, choices=BlogType, verbose_name=u'博客类型')
     blog_title = models.CharField(blank=False, max_length=250, verbose_name= u'博客标题', unique=True)
-    blog_simple_text = models.CharField(blank=False, max_length=250, verbose_name= u'博客简介',default='233')
+    blog_simple_text = models.CharField(blank=False, max_length=250, verbose_name= u'博客简介',help_text=u'请用简短的写一下本Blog的简述')
     blog_text = models.TextField(blank=False, max_length=2048, verbose_name= u'博客内容')
     creator = models.ForeignKey(User, verbose_name=u'创建人', null=True, on_delete=models.SET_NULL)
     created_date = models.DateTimeField(verbose_name=u'创建日期', default=datetime.now)
