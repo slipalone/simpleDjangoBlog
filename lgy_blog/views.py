@@ -24,7 +24,7 @@ def detail_page(request, blog_id):
     except Blog.DoesNotExist:
         raise Http404(u'页面不存在')
 
-    return render(request,'detail_page.html',{'blog_detail': blog_detail})
+    return render(request,'detail_page.html',{'blog_detail': blog_detail, 'type_list': BlogType})
 
 
 def cover(request):

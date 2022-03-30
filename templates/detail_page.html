@@ -28,26 +28,24 @@
                         <p class="mb-0">{{ blog_detail.blog_simple_text }}</p>
                     </div>
                     {# 侧边栏标签检索 #}
+
                     <div class="p-4">
-                        <h4 class="font-italic">其他博文的标签检索(暂时没做)</h4>
+                        <h4 class="font-italic">分类列表</h4>
                         <ol class="list-unstyled mb-0">
-                            <li><a href="#">Tag 1</a></li>
-                            <li><a href="#">Tag 2</a></li>
-                            <li><a href="#">Tag 3</a></li>
-                            <li><a href="#">Tag 4</a></li>
-                            <li><a href="#">Tag 5</a></li>
-                            <li><a href="#">Tag 6</a></li>
-                            <li><a href="#">Tag 7</a></li>
-                            <li><a href="#">Tag 8</a></li>
+                            {% if type_list %}
+                                {% for type in type_list %}
+                                    <li><a href="/type/{{ type.0 }}">Type: {{ type.1 }}</a></li>
+                                {% endfor %}
+                            {% endif %}
                         </ol>
                     </div>
                     {# 放些外链啥的 #}
                     <div class="p-4">
-                        <h4 class="font-italic">Elsewhere(其他的外链)</h4>
+                        <h4 class="font-italic">Elsewhere</h4>
                         <ol class="list-unstyled">
-                            <li><a href="#">GitHub</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Facebook</a></li>
+                            <li><a href="https://github.com">GitHub</a></li>
+                            <li><a href="https://twitter.com">Twitter</a></li>
+                            <li><a href="https://facebook.com">Facebook</a></li>
                         </ol>
                     </div>
                 </aside><!-- /.blog-sidebar -->
