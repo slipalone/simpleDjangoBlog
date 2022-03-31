@@ -15,7 +15,7 @@
                         <p class="blog-post-meta">{{ blog_detail.created_date}} by <a href="#">{{ blog_detail.creator }}</a></p>
                         <hr>
                         <blockquote>
-                            <p>{{ blog_detail.blog_text }}</p>
+                            <p>{{ blog_detail.blog_text|safe }}</p>
                         </blockquote>
                     </div><!-- /.blog-post -->
                 </div><!-- /.blog-main -->

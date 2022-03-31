@@ -39,6 +39,7 @@ class Blog(models.Model):
     class Meta:
         verbose_name = u'个人博客'
         verbose_name_plural = verbose_name
+        ordering = ('-created_date',)
 
     def __str__(self):
         return self.blog_title

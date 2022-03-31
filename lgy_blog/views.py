@@ -1,3 +1,4 @@
+import markdown
 from django.http import Http404
 from django.shortcuts import render
 from django.template import loader
@@ -21,6 +22,13 @@ def detail_page(request, blog_id):
     try:
         blog_detail = Blog.objects.get(pk=blog_id)
         blog_detail.blog_type = BlogType[blog_detail.blog_type][1]
+        blog_detail.blog_text = markdown.markdown(
+            blog_detail.blog_text,
+            extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ]
+        )
     except Blog.DoesNotExist:
         raise Http404(u'页面不存在')
 

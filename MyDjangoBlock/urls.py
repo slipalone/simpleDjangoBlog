@@ -20,6 +20,7 @@ from django.utils.translation import gettext as _
 
 
 urlpatterns = [
+    #path('blog/', include('lgy_blog.urls', namespace=u'blog_article')),
     url(r"^", include('lgy_blog.urls')),
     path('admin/', admin.site.urls),
 ]

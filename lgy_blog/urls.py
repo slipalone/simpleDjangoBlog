@@ -9,6 +9,5 @@ urlpatterns = [
     url(r"^type/(?P<type_index>\d)/$", views.show_by_one_type, name=u'分类详情'),
     url(r"^type_list/", views.show_by_type, name=u'分类列表'),
     path("",views.cover,name=u'初始页'),
-
 ]
 
