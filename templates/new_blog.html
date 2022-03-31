@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>提交表单</h1>
+<!-- 写文章表单 -->
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <!-- 提交文章的表单 -->
+            <form method="post" action=".">
+                <!-- Django中需要POST数据的地方都必须有csrf_token -->
+                {% csrf_token %}
+                <!-- 文章标题 -->
+                <div class="form-group">
+                    <label for="title">文章分类</label>
+                    <input type="text" class="form-control" id="blog_type" name="blog_type">
+                    <label for="title">文章标题</label>
+                    <input type="text" class="form-control" id="blog_title" name="blog_title">
+                    <label for="title">文章简介</label>
+                    <input type="text" class="form-control" id="blog_simple_text" name="blog_simple_text">
+                </div>
+                <!-- 文章正文 -->
+                <div class="form-group">
+                    <label for="body">文章正文</label>
+                    <!-- 文本区域 -->
+                    <textarea type="text" class="form-control" id="blog_text" name="blog_text" rows="12"></textarea>
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary">完成</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

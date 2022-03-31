@@ -1,10 +1,13 @@
 import markdown
-from django.http import Http404
-from django.shortcuts import render
+from django.http import Http404, HttpResponse
+from django.shortcuts import render,redirect
 from django.template import loader
 
 from lgy_blog.models import Blog
 from lgy_blog.models import BlogType
+
+from .forms import BlogPostForm
+from django.contrib.auth.models import User
 
 #首页(附带展示bloglist的功能)
 def index(request):
@@ -61,3 +64,25 @@ def search(request):
     pass
 
 
+# 前端写文章的view
+def blog_create(request):
+    if request.method == 'POST':
+        blog_post_form = BlogPostForm(data=request.POST)
+
+        if blog_post_form.is_valid():
+            new_blog = blog_post_form.save(commit=False)
+
+            new_blog.creator = User.objects.get(id=1)
+
+            new_blog.save()
+
+            return redirect('/index')
+        else:
+            return HttpResponse("表单有误，请重新填写")
+
+    else:
+        blog_post_form = BlogPostForm()
+
+        context = {'blog_post_form': blog_post_form}
+
+        return render(request, 'new_blog.html', context)
