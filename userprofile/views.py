@@ -6,6 +6,8 @@ from django.http import HttpResponse
 from .forms import UserLoginForm
 from django.contrib.auth import authenticate, login, logout
 from .forms import UserLoginForm, UserRegisterForm
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -49,7 +51,7 @@ def user_register(request):
             new_user.save()
             # 保存好数据后立即登录并返回博客列表页面
             login(request, new_user)
-            return redirect("/userprofile/login/")
+            return redirect("/index/")
         else:
             return HttpResponse("注册表单输入有误。请重新输入~")
     elif request.method == 'GET':
@@ -58,3 +60,19 @@ def user_register(request):
         return render(request, 'register.html', context)
     else:
         return HttpResponse("请使用GET或POST请求数据")
+
+
+@login_required(login_url='/userprofile/login/')
+def user_delete(request, id):
+    if request.method == 'POST':
+        user = User.objects.get(id=id)
+        # 验证登录用户、待删除用户是否相同
+        if request.user == user:
+            #退出登录，删除数据并返回博客列表
+            logout(request)
+            user.delete()
+            return redirect("/index/")
+        else:
+            return HttpResponse("你没有删除操作的权限。")
+    else:
+        return HttpResponse("仅接受post请求。")
