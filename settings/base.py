@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'lgy_blog',
     # 'django_python3_ldap',
     'userprofile',
+    'password_reset',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,17 @@ LOGGING = {
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# 邮件配置
+# SMTP服务器，改为你的邮箱的smtp!
+EMAIL_HOST = 'smtp.126.com'
+# 改为你自己的邮箱名！
+EMAIL_HOST_USER = 'lgyblog_official@126.com'
+# 你的邮箱密码
+EMAIL_HOST_PASSWORD = 'QABCNRHLBVBSGZDC'
+# 发送邮件的端口
+EMAIL_PORT = 25
+# 是否使用 TLS
+EMAIL_USE_TLS = True
+# 默认的发件人
+DEFAULT_FROM_EMAIL = '雨晨的博客 <lgyblog_official@126.com>'

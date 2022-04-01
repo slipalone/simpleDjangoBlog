@@ -23,6 +23,7 @@ urlpatterns = [
     path("",include('lgy_blog.urls')),
     path('admin/', admin.site.urls),
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
+    path('password-reset/', include('password_reset.urls')),
 ]
 
 admin.site.site_header = _('雨晨Blog管理系统')

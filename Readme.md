@@ -37,3 +37,4 @@
 4. 支持富文本编辑器提交博文！！！！！（或支持Markdown）
 5. 加Logger
 
+(lgyblog_official@126.com)
