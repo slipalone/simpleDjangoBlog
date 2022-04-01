@@ -13,6 +13,16 @@
                     <div class="blog-post">
                         <h2 class="blog-post-title">{{ blog_detail.blog_title}}</h2>
                         <p class="blog-post-meta">{{ blog_detail.created_date}} by <a href="#">{{ blog_detail.creator }}</a></p>
+                        <p><a href="#" onclick="confirm_safe_delete()">删除文章</a> </p>
+                        <form
+                                style="display: none;"
+                                id="safe_delete"
+                                action="/blog-safe-delete/{{ blog_detail.id }}/"
+                                method="post"
+                        >
+                            {% csrf_token %}
+                            <button type="submit">发送</button>
+                        </form>
                         <hr>
                         <blockquote>
                             <p>{{ blog_detail.blog_text|safe }}</p>
@@ -52,6 +62,21 @@
             </div><!-- /.row -->
         </main><!-- /.container -->
 
+        <script>
+        function confirm_safe_delete(){
+            layer.open({
+                //弹窗标题
+                title: "确认删除",
+                //正文
+                content: "确认删除这篇文章吗？",
+
+                yes: function (index,layero){
+                    $('form#safe_delete button').click();
+                    layer.close()
+                }
+            })
+        }
+        </script>
 
     {% endif %}
 

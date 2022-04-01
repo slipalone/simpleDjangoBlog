@@ -86,3 +86,13 @@ def blog_create(request):
         context = {'blog_post_form': blog_post_form}
 
         return render(request, 'new_blog.html', context)
+
+
+def blog_delete(request, blog_id):
+    if request.method == 'POST':
+        blog = Blog.objects.get(pk=blog_id)
+        blog.delete()
+        return redirect('/index')
+    else:
+        return HttpResponse("仅允许POST访问请求")
+

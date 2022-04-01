@@ -11,5 +11,6 @@ urlpatterns = [
     path("type_list/", views.show_by_type, name=u'分类列表'),
     path("",views.cover,name=u'初始页'),
     path('blog-create/', views.blog_create, name=u'提交博客'),
+    path('blog-safe-delete/<int:blog_id>/', views.blog_delete, name=u'删除博客'),
 ]
 
