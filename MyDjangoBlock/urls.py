@@ -20,10 +20,9 @@ from django.utils.translation import gettext as _
 
 
 urlpatterns = [
-    #path('blog/', include('lgy_blog.urls', namespace=u'blog_article')),
     path("",include('lgy_blog.urls')),
-    #url(r"^", include('lgy_blog.urls')),
     path('admin/', admin.site.urls),
+    path('userprofile/', include('userprofile.urls', namespace='userprofile')),
 ]
 
 admin.site.site_header = _('雨晨Blog管理系统')

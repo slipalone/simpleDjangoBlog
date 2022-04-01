@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lgy_blog',
     # 'django_python3_ldap',
+    'userprofile',
 ]
 
 MIDDLEWARE = [
