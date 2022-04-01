@@ -12,12 +12,12 @@
                 {% csrf_token %}
                 <!-- 文章标题 -->
                 <div class="form-group">
-                    <label for="title">文章分类</label>
-                    <input type="text" class="form-control" id="blog_type" name="blog_type">
+                    <label for="title">文章分类 (0:技术类; 1:生活类; 2:家庭类; 3:爱好类)</label>
+                    <input type="text" class="form-control" id="blog_type" name="blog_type" placeholder="请输入上述0，1，2，3中的一个">
                     <label for="title">文章标题</label>
-                    <input type="text" class="form-control" id="blog_title" name="blog_title">
+                    <input type="text" class="form-control" id="blog_title" name="blog_title" placeholder="请输入文章标题">
                     <label for="title">文章简介</label>
-                    <input type="text" class="form-control" id="blog_simple_text" name="blog_simple_text">
+                    <input type="text" class="form-control" id="blog_simple_text" name="blog_simple_text" placeholder="请输入文章简介">
                 </div>
                 <!-- 文章正文 -->
                 <div class="form-group">
