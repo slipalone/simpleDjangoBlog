@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <br>
+            <form method="post" action=".">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">文章分类 (0:技术类; 1:生活类; 2:家庭类; 3:爱好类)</label>
+                    <input type="text" class="form-control" id="blog_type" name="blog_type" value="{{ blog.blog_type }}">
+                    <label for="title">文章标题</label>
+                    <input type="text" class="form-control" id="blog_title" name="blog_title" value="{{ blog.blog_title }}">
+                    <label for="title">文章简介</label>
+                    <input type="text" class="form-control" id="blog_simple_text" name="blog_simple_text" value="{{ blog.blog_simple_text }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="body">文章正文</label>
+                    <!-- 文本区域 -->
+                    <textarea type="text" class="form-control" id="blog_text" name="blog_text" rows="12">{{ blog.blog_text }}</textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">完成</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

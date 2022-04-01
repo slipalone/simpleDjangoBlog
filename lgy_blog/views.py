@@ -96,3 +96,20 @@ def blog_delete(request, blog_id):
     else:
         return HttpResponse("仅允许POST访问请求")
 
+def blog_update(request, blog_id):
+    blog = Blog.objects.get(pk=blog_id)
+    if request.method == "POST":
+        blog_post_form = BlogPostForm(data=request.POST)
+        if blog_post_form.is_valid():
+            blog.blog_type = request.POST['blog_type']
+            blog.blog_title = request.POST['blog_title']
+            blog.blog_simple_text = request.POST['blog_simple_text']
+            blog.blog_text = request.POST['blog_text']
+            blog.save()
+            return redirect('/blog/{0}/'.format(blog_id))
+        else:
+            return HttpResponse("表单内容有误，请重新填写。")
+    else:
+        blog_post_form = BlogPostForm(data=request.POST)
+        context = {'blog': blog, 'blog_post_form': blog_post_form}
+        return render(request, 'update.html', context)

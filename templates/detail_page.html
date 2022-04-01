@@ -23,6 +23,7 @@
                             {% csrf_token %}
                             <button type="submit">发送</button>
                         </form>
+                        <p><a href="/blog-update/{{ blog_detail.id }}/">编辑文章</a> </p>
                         <hr>
                         <blockquote>
                             <p>{{ blog_detail.blog_text|safe }}</p>

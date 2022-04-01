@@ -12,5 +12,6 @@ urlpatterns = [
     path("",views.cover,name=u'初始页'),
     path('blog-create/', views.blog_create, name=u'提交博客'),
     path('blog-safe-delete/<int:blog_id>/', views.blog_delete, name=u'删除博客'),
+    path('blog-update/<int:blog_id>/', views.blog_update, name=u'更新博文')
 ]
 
