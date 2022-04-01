@@ -26,3 +26,12 @@ class UserRegisterForm(forms.ModelForm):
             return data.get('password')
         else:
             raise forms.ValidationError("密码输入不一致,请重试。")
+
+
+# 引入 Profile 模型
+from .models import Profile
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('phone', 'avatar', 'bio')
