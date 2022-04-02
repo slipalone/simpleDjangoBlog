@@ -166,3 +166,6 @@ EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 # 默认的发件人
 DEFAULT_FROM_EMAIL = '雨晨的博客 <lgyblog_official@126.com>'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

@@ -9,6 +9,8 @@ from lgy_blog.models import BlogType
 from .forms import BlogPostForm
 from django.contrib.auth.models import User
 
+from django.core.paginator import Paginator
+
 
 # 首页(附带展示bloglist的功能)
 def index(request):

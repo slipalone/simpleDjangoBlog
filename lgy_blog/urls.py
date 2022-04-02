@@ -15,3 +15,4 @@ urlpatterns = [
     path('blog-update/<int:blog_id>/', views.blog_update, name=u'更新博文')
 ]
 
+

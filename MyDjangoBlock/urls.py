@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from django.utils.translation import gettext as _
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -25,5 +27,8 @@ urlpatterns = [
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     path('password-reset/', include('password_reset.urls')),
 ]
+
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = _('雨晨Blog管理系统')
