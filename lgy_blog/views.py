@@ -34,6 +34,7 @@ def index(request):
 def detail_page(request, blog_id):
     try:
         blog_detail = Blog.objects.get(pk=blog_id)
+        hottest_blog_list = Blog.objects.order_by('-click_nums')[0:4]
         blog_detail.blog_type = BlogType[blog_detail.blog_type][1]
         blog_detail.click_nums += 1
         blog_detail.save(update_fields=['click_nums'])
@@ -44,10 +45,15 @@ def detail_page(request, blog_id):
                 'markdown.extensions.codehilite',
             ]
         )
+        context = {
+            'blog_detail': blog_detail,
+            'type_list': BlogType,
+            'hottest_blog_list': hottest_blog_list
+        }
     except Blog.DoesNotExist:
         raise Http404(u'页面不存在')
 
-    return render(request, 'detail_page.html', {'blog_detail': blog_detail, 'type_list': BlogType})
+    return render(request, 'detail_page.html', context)
 
 
 def cover(request):
