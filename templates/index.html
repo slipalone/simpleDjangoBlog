@@ -31,4 +31,44 @@
     {% endfor %}
     </div>
 
+    <!-- 页码导航 -->
+<div class="pagination row">
+    <div class="m-auto">
+        <span class="step-links">
+            <!-- 如果不是第一页，则显示上翻按钮 -->
+            {% if blog_list.has_previous %}
+                <a href="?page=1" class="btn btn-success">
+                    &laquo; 1
+                </a>
+                <span>...</span>
+                <a href="?page={{ blog_list.previous_page_number }}"
+                   class="btn btn-secondary"
+                >
+                    {{ blog_list.previous_page_number }}
+                </a>
+            {% endif %}
+
+            <!-- 当前页面 -->
+            <span class="current btn btn-danger btn-lg">
+                {{ blog_list.number }}
+            </span>
+
+            <!-- 如果不是最末页，则显示下翻按钮 -->
+            {% if blog_list.has_next %}
+                <a href="?page={{ blog_list.next_page_number }}"
+                   class="btn btn-secondary"
+                >
+                    {{ blog_list.next_page_number }}
+                </a>
+                <span>...</span>
+                <a href="?page={{ blog_list.paginator.num_pages }}"
+                   class="btn btn-success"
+                >
+                    {{ blog_list.paginator.num_pages }} &raquo;
+                </a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
 {% endblock %}

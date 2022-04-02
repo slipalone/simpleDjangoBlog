@@ -15,6 +15,12 @@ from django.core.paginator import Paginator
 # 首页(附带展示bloglist的功能)
 def index(request):
     blog_list = Blog.objects.order_by('-created_date')
+
+    paginator = Paginator(blog_list, 4)
+
+    page = request.GET.get('page')
+
+    blog_list = paginator.get_page(page)
     # templates = loader.get_template('blog_list.html')
     context = {'blog_list': blog_list}
 
