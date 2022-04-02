@@ -64,6 +64,7 @@
                 </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href='{% url "userprofile:edit" user.id %}'>修改个人信息</a>
+                      <a class="dropdown-item" href='/blog-create/'>上传新的博客</a>
                     <a class="dropdown-item btn btn-sm btn-outline-secondary" href="{% url "userprofile:logout" %}">退出登录</a>
                       <a class="dropdown-item" href="#" onclick="user_delete()">删除用户</a>
                   </div>

@@ -13,7 +13,11 @@
                     <div class="blog-post">
                         <h2 class="blog-post-title">{{ blog_detail.blog_title}}</h2>
                         <p class="blog-post-meta">{{ blog_detail.created_date}} by <a href="#">{{ blog_detail.creator }}</a></p>
-                        <p><a href="#" onclick="confirm_safe_delete()">删除文章</a> </p>
+                        {% if user == blog_detail.creator %}
+                            <p><a href="#" onclick="confirm_safe_delete()">删除文章</a> </p>
+                            <p><a href="/blog-update/{{ blog_detail.id }}/">编辑文章</a> </p>
+                        {% endif %}
+                        <!-- 隐藏表单 -->
                         <form
                                 style="display: none;"
                                 id="safe_delete"
@@ -23,7 +27,7 @@
                             {% csrf_token %}
                             <button type="submit">发送</button>
                         </form>
-                        <p><a href="/blog-update/{{ blog_detail.id }}/">编辑文章</a> </p>
+                        <p>点击量:{{ blog_detail.click_nums }}</p>
                         <hr>
                         <blockquote>
                             <p>{{ blog_detail.blog_text|safe }}</p>

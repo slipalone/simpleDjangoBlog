@@ -22,6 +22,11 @@
                         <div class="mb-1 text-muted">{{ blog.created_date}}</div>
                         <p class="card-text mb-auto">{{ blog.blog_simple_text }}</p>
                         <a href="/blog/{{ blog.id }}" class="stretched-link">Continue reading</a>
+                        <span>
+                            <smallc class="col align-self-end" style="color: gray;">
+                                点击量: {{ blog.click_nums }}
+                            </smallc>
+                        </span>
                     </div>
                 <div class="col-auto d-none d-lg-block">
                     <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>

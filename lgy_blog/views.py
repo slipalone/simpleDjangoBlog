@@ -16,7 +16,7 @@ from django.core.paginator import Paginator
 def index(request):
     blog_list = Blog.objects.order_by('-created_date')
 
-    paginator = Paginator(blog_list, 4)
+    paginator = Paginator(blog_list, 6)
 
     page = request.GET.get('page')
 
@@ -35,6 +35,8 @@ def detail_page(request, blog_id):
     try:
         blog_detail = Blog.objects.get(pk=blog_id)
         blog_detail.blog_type = BlogType[blog_detail.blog_type][1]
+        blog_detail.click_nums += 1
+        blog_detail.save(update_fields=['click_nums'])
         blog_detail.blog_text = markdown.markdown(
             blog_detail.blog_text,
             extensions=[
@@ -105,17 +107,23 @@ def blog_create(request):
         return render(request, 'new_blog.html', context)
 
 
+@login_required(login_url='/userprofile/login/')
 def blog_delete(request, blog_id):
     if request.method == 'POST':
         blog = Blog.objects.get(pk=blog_id)
+        if request.user != blog.creator:
+            return HttpResponse("抱歉，您无权删除本篇文章。")
         blog.delete()
         return redirect('/index')
     else:
         return HttpResponse("仅允许POST访问请求")
 
 
+@login_required(login_url='/userprofile/login/')
 def blog_update(request, blog_id):
     blog = Blog.objects.get(pk=blog_id)
+    if request.user != blog.creator:
+        return HttpResponse("抱歉，您无权修改本篇文章。")
     if request.method == "POST":
         blog_post_form = BlogPostForm(data=request.POST)
         if blog_post_form.is_valid():
