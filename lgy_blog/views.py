@@ -30,6 +30,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 
+from comment.models import Comment
 # 详情页
 def detail_page(request, blog_id):
     try:
@@ -45,10 +46,12 @@ def detail_page(request, blog_id):
                 'markdown.extensions.codehilite',
             ]
         )
+        comments = Comment.objects.filter(article=blog_id)
         context = {
             'blog_detail': blog_detail,
             'type_list': BlogType,
-            'hottest_blog_list': hottest_blog_list
+            'hottest_blog_list': hottest_blog_list,
+            'comments': comments,
         }
     except Blog.DoesNotExist:
         raise Http404(u'页面不存在')

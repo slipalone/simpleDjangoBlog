@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # 'django_python3_ldap',
     'userprofile',
     'password_reset',
+    'comment',
 ]
 
 MIDDLEWARE = [
